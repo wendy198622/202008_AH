@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+<link rel="stylesheet" type="text/css" href="css/slick.css">
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+<link rel="stylesheet" type="text/css" href="css/icomoon.css">
+<link rel="stylesheet" type="text/css" href="css/footer.css">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="js/fullpage.js"></script>
+
+<style>
+    body{
+        font-size: 14px;
+    }
+    a, a:hover, a:active, a:visited ,a:focus{ width: 100%; display: block; outline: 0; border: 0;}
+    img{ display: block;}
+    
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        z-index: 10;
+        transition: all .3s;
+    }
+    /* header */
+    header .header-logo{
+        width: 126px;
+        float: left;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    header .header-logo a{
+        width: auto;
+        height: 32px;
+    }
+    header .header-logo a img{
+        height: 100%;
+    }
+
+    header .header-menu{
+        width: 300px;
+        float: left;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+    }
+    
+    @media (max-width: 800px) {
+        header .header-menu{
+            display: none;
+        }
+    }
+    header .header-menu li{
+        float: left;
+        padding-right: 15px;
+        padding-left: 15px;
+        cursor: default;
+        text-align: center;
+    }
+    header .header-menu li a{
+        color: #000;
+        text-decoration: none;
+        line-height: 40px;
+        font-family: 'now', 'Microsoft JhengHei', 'PingFangSC-Regular', sans-serif;
+        font-size: 13px;
+    }
+    header .header-menu li:hover a{
+        font-weight: 800;
+        text-decoration: underline;
+    }
+    header .user-menu{
+        width: 100px;
+        line-height: 40px;
+        float: right;
+        padding: 15px;
+        list-style: none;
+        overflow: hidden;
+    }
+    @media (max-width: 800px) {
+        header .user-menu{
+            display: none;
+        }
+    }
+    header .user-menu a{
+        width: 30px;
+        height: 40px;
+        text-align: center;
+        float: right;
+        text-align: center;
+        color: #000;
+        text-decoration: none;
+    }
+    header .user-menu i{
+    }
+    .icon-love:before { content: "\e66b";}
+    .icon-user:before { content: "\e6bc";}
+
+    /* wrap */
+    .wrap{
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        overflow: hidden;
+    }
+    .wrap.pc{
+        display: block;
+    }
+    .wrap.mob{
+        display: none;
+    }
+    @media (max-width: 800px) {
+        .wrap.pc{
+            display: none;
+        }
+        .wrap.mob{
+            display: block;
+        }
+    }
+    .wrap .topBox a{
+        width: 100%;
+        height: 0;
+        padding-bottom: calc(1080 / 1920 * 100%);
+        min-height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    @media (max-width: 800px) {
+        .wrap .topBox a{
+            width: 100%;
+            height: auto;
+            padding-bottom: 0;
+        }
+        .wrap .topBox a img{
+            width: 100%;
+        }
+    }
+    .wrap .eventBox{
+        width: 100%;
+        overflow: hidden;
+    }
+    .wrap .eventBox a{
+        width: 50%;
+        height: 100vh;
+        overflow: hidden;
+        display: block;
+        float: left;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    .wrap .eventBox a.block4{
+        width: 25%;
+    }
+    .wrap .eventBox a.block2{
+        width: 50%;
+    }
+    
+    .wrap .eventBox a.ig{
+        width: 100%;
+        height: auto;
+        padding-bottom: 0;
+    }
+    .wrap .eventBox a img{
+        width: 100%;
+    }
+
+    @media (max-width: 800px) {
+        .wrap .eventBox a{
+            width: 100%;
+            height: auto;
+            padding-bottom: 0;
+        }
+    }
+    /* footer */
+    #footer{
+        margin-top: 0;
+    }
+    @media (max-width: 960px) { 
+        #footer{
+        }
+    }
+    #footer .footer-container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 98%;
+        max-width: 1300px;
+    }
+    #footer .top-content{
+        overflow: hidden;
+    }
+
+    #footer .top-content ul{
+        width: calc((100% - 120px) / 4);
+        float: left;
+        margin-bottom: 40px;
+        list-style: none;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    @media (max-width: 991px) {
+        #footer .top-content ul{
+            width: calc((100% - 60px) / 2);
+        }
+    }
+    @media (max-width: 575px) {
+        #footer .top-content ul{
+            width: calc(100% - 30px);
+            margin-bottom: 0;
+        }
+    }
+    #footer .bottom-content img{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #footer .top-content ul li a{
+        color: #212529;
+        text-decoration: none;
+    }
+    /* 回到頂部 */
+    #go-top {
+    position: fixed;
+    right: 15px;
+    bottom: 78px;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    border: 0px solid #aaa;
+    cursor: pointer;
+    transition: all .15s;
+    -webkit-transition: all .15s;
+    -moz-transition: all .15s;
+    -ms-transition: all .15s;
+    z-index: 50;
+    background-color: #ccc;
+    }
+    #go-top:hover {
+    background-color: #aaa;
+    }
+    #go-top .iconfont.icon-arrow-up {
+    font-size: 20px;
+    }
+    #go-top:hover .iconfont.icon-arrow-up {
+    color: #ffffff;
+    }
+
+    @media (max-width: 960px) { 
+        #go-top {
+            bottom: 10px;
+        }
+    }
+    .slider{
+        position: relative;
+    }
+    .slick-dots{
+        position: absolute;
+        bottom: 120px;
+    }
+    .slick-dots li{
+        width: 10px;
+        height: 10px;
+        padding: 0;
+    }
+    .slick-dots li button{
+        width: 10px;
+        height: 10px;
+        padding: 0;
+    }
+    .slick-dots li button:before{
+        border: 1px solid #fff;
+        border-radius: 100%;
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+        color: transparent;
+    }
+    .slick-dots li.slick-active button:before{
+        background-color: #fff;
+        opacity: 1;
+        color: transparent;
+    }
+    .slick-dotted.slick-slider{
+        margin-bottom: -4px;
+    }
+    .slick-slide img{
+        margin-bottom: -4px;
+    }
+    
+    .scroll__content, .scroll__content:hover {
+        width: 30px;
+        position: fixed;
+        z-index: 20;
+        left: 50%;
+        display: block;
+        transform: translateX(-50%);
+        bottom: 10px;
+        -webkit-writing-mode: vertical-lr;
+            -ms-writing-mode: tb-lr;
+                writing-mode: vertical-lr;
+        font-size: 12px;
+        line-height: 1;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #111c4e;
+        vertical-align: middle;
+        cursor: pointer;
+        overflow: hidden;
+        font-family: 'now', 'Microsoft JhengHei', 'PingFangSC-Regular', sans-serif;
+    }
+
+    .scroll__content:before {
+        content: "";
+        width: 20px;
+        height: 83px;
+        background: url(images/arrow_downward.svg) center center no-repeat;
+        background-size: 20px 83px;
+        position: absolute;
+        z-index: 21;
+        top: 0px;
+        right: -2px;
+        -webkit-animation: scroll 1s infinite ease-in;
+                animation: scroll 1s infinite ease-in;
+    }
+
+    .scroll__content img {
+        width: 20px;
+        height: 83px;
+        display: block;
+        margin-right: 10px;
+        margin-top: 5px;
+        opacity: 0.5;
+    }
+
+    @-webkit-keyframes scroll {
+        0% {
+            height: 0;
+            top: 0px;
+        }
+        50% {
+            height: 40px;
+            top: 74px;
+        }
+        100% {
+            height: 0px;
+            top: 120px;
+        }
+    }
+
+    @keyframes scroll {
+        0% {
+            height: 0;
+            top: 0px;
+        }
+        50% {
+            height: 40px;
+            top: 74px;
+        }
+        100% {
+            height: 0px;
+            top: 147px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .scroll__content {
+            display: none;
+        }
+    }
+
+</style>
+<body style="margin: 0; padding: 0;">
+    <header id="header">
+        <div class="header-logo">
+            <a href="/"><img src="images/andenhud_logo.png" alt=""></a>
+        </div>
+        <ul class="header-menu">
+            <li><a href="#"><span>WOMEN</span></a></li>            
+            <li><a href="#"><span>MEN</span></a></li>            
+            <li><a href="#"><span>KIDS</span></a></li>            
+            <li><a href="#"><span>SALE</span></a></li>
+        </ul>
+        <div class="user-menu">
+            <a href="#"><i class="iconfont icon-love navigator-to-user"></i></a>
+            <a href="#"><i class="iconfont icon-user navigator-to-user"></i></a>
+            
+            
+        </div>
+    </header>
+    <!-- 電腦版 -->
+	<div id="actions">
+		<!-- <a id="moveSectionUp" href="#"><i class="material-icons">keyboard_arrow_up</i></a> -->
+        <!-- <ahref="#"><i class="material-icons">keyboard_arrow_down</i></a> -->
+        <!-- <a href="#" id="moveSectionDown"  class="scroll-down" address="true"></a> -->
+        <a class="scroll__content" id="moveSectionDown">SCROLL<img src="images/arrow_downward.svg" alt=""> </a>
+	</div>
+    <div class="wrap pc fullpage">
+        <!-- 輪播區塊 -->
+        <div class="topBox section">
+            <div class="slider">
+                <a href="https://www.andenhud.com.tw/sales/10017/Underwear99up" target="_blank" style="background-image: url(images/BIG_MKT01.jpg);"></a>
+                <a href="https://www.andenhud.com.tw/sales/10015/Function" target="_blank" style="background-image: url(images/BIG_MKT02.jpg);"></a>
+                <a href="https://www.andenhud.com.tw/sales/10018/Finalsale" target="_blank" style="background-image: url(images/BIG_MKT03.jpg);"></a>
+                <a href="https://www.andenhud.com.tw/sales/10008/Newarrival" target="_blank" style="background-image: url(images/BIG_MKT04.jpg);"></a>
+            </div>
+        </div>
+        <!-- 輪播區塊 END -->
+        <!-- 下方BN -->      
+        <div class="eventBox section">
+            <div class="row odd">
+                <a href="https://www.andenhud.com.tw/sales/10012/SanrioCollection" style="background-image: url(images/20200826_mkt_02.jpg);" target="_blank"></a>
+                <a href="https://www.andenhud.com.tw/sales/10012/SanrioCollection" style="background-image: url(images/20200826_mkt_03.jpg);" target="_blank"></a>
+            </div>
+        </div>
+        <div class="eventBox section">
+            <div class="row even">
+                <a href="https://www.andenhud.com.tw/sales/10010/SumikkoGurashiCollection" style="background-image: url(images/20200826_mkt_04.jpg); target="_blank"></a>
+                <a href="https://www.andenhud.com.tw/sales/10010/SumikkoGurashiCollection" style="background-image: url(images/20200826_mkt_05.jpg); target="_blank"></a>
+            </div>
+        </div>
+        <div class="eventBox section">
+            <div class="row odd">
+                <a href="https://www.andenhud.com.tw/sales/10016/Lace" style="background-image: url(images/20200826_mkt_06.jpg); target="_blank"></a>
+                <a href="https://www.andenhud.com.tw/sales/10016/Lace" style="background-image: url(images/20200826_mkt_07.jpg); target="_blank"></a>
+            </div>
+        </div>
+        <div class="eventBox section">
+            <div class="row even">
+                <a href="https://www.andenhud.com.tw/sales/10015/Function" style="background-image: url(images/20200826_mkt_08.jpg); target="_blank"></a>
+                <a href="https://www.andenhud.com.tw/sales/10015/Function" style="background-image: url(images/20200826_mkt_09.jpg); target="_blank"></a>
+            </div>
+        </div>
+        <div class="eventBox section">
+            <div class="row odd">
+                <a href="https://www.andenhud.com.tw/sales/10015/Function" style="background-image: url(images/20200826_mkt_10.jpg);" target="_blank"></a>
+                <a href="https://www.andenhud.com.tw/sales/10015/Function" style="background-image: url(images/20200826_mkt_11.jpg);" target="_blank"></a>
+            </div>
+        </div>
+        <div class="eventBox section">
+            <div class="row even">
+                <a class="block4" href="https://www.andenhud.com.tw/sales/10013/DisneyCollection" style="background-image: url(images/20200826_mkt_12.jpg);" target="_blank"></a>
+                <a class="block4" href="https://www.andenhud.com.tw/sales/10005/Sleepwear" style="background-image: url(images/20200826_mkt_13.jpg);" target="_blank"></a>
+                <a class="block4" href="https://www.andenhud.com.tw/sales/10006/Kidsunderwear" style="background-image: url(images/20200826_mkt_14.jpg);" target="_blank"></a>
+                <a class="block4" href="https://www.andenhud.com.tw/sales/10007/Mensunderwear" style="background-image: url(images/20200826_mkt_15.jpg);" target="_blank"></a>
+            </div>
+        </div>
+        <div class="eventBox section fp-auto-height">          
+            <div class="row">
+                <a class="ig" href="https://www.instagram.com/andenhud/" target="_blank"><img src="images/20200826_mkt_16.jpg" alt=""></a>
+            </div>            
+        </div>
+        <!-- 下方BN END-->
+        <footer id="footer" class="section fp-auto-height">
+            <div class="top-content footer-container">
+                <ul>
+                    <div class="title">
+                        <span>About Us</span>
+                        <i class="iconfont icon-arrow-down"></i>
+                    </div>
+                    <div class="top-content-list">
+                        <li><a href="about">公司簡介</a></li>
+                        <li><a href="serviceInfo">服務條款</a></li>
+                        <li><a href="news">最新消息</a></li>
+                        <li><a href="privacy">隱私權保護</a></li>
+                    </div>
+                </ul>
+                <ul>
+                    <div class="title">
+                        <span>Customer Care</span>
+                        <i class="iconfont icon-arrow-down"></i>
+                    </div>
+                    <div class="top-content-list">
+                        <li><a href="contactUs">聯絡我們</a></li>
+                        <li><a href="explanation">付款方式</a></li>
+                        <li><a href="linkOrderQuery">訂單查詢</a></li>
+                        <li><a href="returnRefund">退貨 &amp; 退款</a></li>
+                    </div>
+                </ul>
+                <ul>
+                    <div class="title">
+                        <span>Follow Us</span>
+                        <i class="iconfont icon-arrow-down"></i>
+                    </div>
+                    <div class="top-content-list">
+                        <li><a href="https://www.facebook.com/AndenHud.com.tw/"><i class="iconfont icon-facebook"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/accounts/login/?next=/andenhud/"><i class="iconfont icon-instagram"></i> Instagram</a></li>
+                        <li><a href="https://www.instagram.com/andenhud/"><i class="iconfont icon-youtube"></i> Youtube</a></li>
+                        <li><a href="https://line.me/R/ti/p/%40andenhud"><i class="iconfont icomoon icon-line-logo"></i>  Line</a></li>
+                    </div>
+                </ul>
+                <ul>
+                    <div class="title">
+                        <span>Wholesale</span>
+                        <i class="iconfont icon-arrow-down"></i>
+                    </div>
+                    <div class="top-content-list">
+                    </div>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <img src="images/payment01.png" alt="">
+                <img src="images/payment02.png" alt="">
+                <img src="images/payment06.png" alt="">
+            </div>
+        </footer>
+    </div>    
+    <!-- 手機版 -->
+    <div class="wrap mob">
+        <!-- 輪播區塊 -->
+        <div class="topBox">
+            <div class="slider">
+                <a href="https://www.andenhud.com.tw/sales/10017/Underwear99up"><img src="images/BIG_MKT01_M.jpg" alt=""></a>
+                <a href="https://www.andenhud.com.tw/sales/10015/Function"><img src="images/BIG_MKT02_M.jpg" alt=""></a>
+                <a href="https://www.andenhud.com.tw/sales/10018/Finalsale"><img src="images/BIG_MKT03_M.jpg" alt=""></a>
+                <a href="https://www.andenhud.com.tw/sales/10008/Newarrival"><img src="images/BIG_MKT04_M.jpg" alt=""></a>
+            </div>
+        </div>
+        <!-- 輪播區塊 END -->
+        <!-- 下方BN -->
+        <div class="eventBox">
+            <a href="https://www.andenhud.com.tw/sales/10012/SanrioCollection" target="_blank"><img src="images/20200826_mkt_01_M.jpg" alt=""></a>
+            <a href="https://www.andenhud.com.tw/sales/10010/SumikkoGurashiCollection" target="_blank"><img src="images/20200826_mkt_02_M.jpg" alt=""></a>
+            <a href="https://www.andenhud.com.tw/sales/10016/Lace" target="_blank"><img src="images/20200826_mkt_03_M.jpg" alt=""></a>
+            <a href="https://www.andenhud.com.tw/sales/10015/Function" target="_blank"><img src="images/20200826_mkt_04_M.jpg" alt=""></a>
+            <a href="https://www.andenhud.com.tw/sales/10015/Function" target="_blank"><img src="images/20200826_mkt_05_M.jpg" alt=""></a>
+            <a class="block2" href="https://www.andenhud.com.tw/sales/10013/DisneyCollection" target="_blank"><img src="images/20200826_mkt_06_M.jpg" alt=""></a>
+            <a class="block2" href="https://www.andenhud.com.tw/sales/10005/Sleepwear" target="_blank"><img src="images/20200826_mkt_07_M.jpg" alt=""></a>
+            <a class="block2" href="https://www.andenhud.com.tw/sales/10006/Kidsunderwear" target="_blank"><img src="images/20200826_mkt_08_M.jpg" alt=""></a>
+            <a class="block2" href="https://www.andenhud.com.tw/sales/10007/Mensunderwear" target="_blank"><img src="images/20200826_mkt_09_M.jpg" alt=""></a>
+            <a class="ig" href="https://www.instagram.com/andenhud/"><img src="images/20200826_IG_M.jpg" alt=""></a>
+        </div>
+        <!-- 下方BN END-->  <footer id="footer">
+        <div class="top-content footer-container">
+            <ul>
+                <div class="title">
+                    <span>About Us</span>
+                    <i class="iconfont icon-arrow-down"></i>
+                </div>
+                <div class="top-content-list">
+                    <li><a href="about">公司簡介</a></li>
+                    <li><a href="serviceInfo">服務條款</a></li>
+                    <li><a href="news">最新消息</a></li>
+                    <li><a href="privacy">隱私權保護</a></li>
+                </div>
+            </ul>
+            <ul>
+                <div class="title">
+                    <span>Customer Care</span>
+                    <i class="iconfont icon-arrow-down"></i>
+                </div>
+                <div class="top-content-list">
+                    <li><a href="contactUs">聯絡我們</a></li>
+                    <li><a href="explanation">付款方式</a></li>
+                    <li><a href="linkOrderQuery">訂單查詢</a></li>
+                    <li><a href="returnRefund">退貨 &amp; 退款</a></li>
+                </div>
+            </ul>
+            <ul>
+                <div class="title">
+                    <span>Follow Us</span>
+                    <i class="iconfont icon-arrow-down"></i>
+                </div>
+                <div class="top-content-list">
+                    <li><a href="https://www.facebook.com/AndenHud.com.tw/"><i class="iconfont icon-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.instagram.com/accounts/login/?next=/andenhud/"><i class="iconfont icon-instagram"></i> Instagram</a></li>
+                    <li><a href="https://www.instagram.com/andenhud/"><i class="iconfont icon-youtube"></i> Youtube</a></li>
+                    <li><a href="https://line.me/R/ti/p/%40andenhud"><i class="iconfont icomoon icon-line-logo"></i>  Line</a></li>
+                </div>
+            </ul>
+            <ul>
+                <div class="title">
+                    <span>Wholesale</span>
+                    <i class="iconfont icon-arrow-down"></i>
+                </div>
+                <div class="top-content-list">
+                </div>
+            </ul>
+        </div>
+        <div class="bottom-content">
+            <img src="images/payment01.png" alt="">
+            <img src="images/payment02.png" alt="">
+            <img src="images/payment06.png" alt="">
+        </div>
+    </footer>
+    </div>
+
+    
+    <div id="go-top">
+        <i class="iconfont icon-arrow-up"></i>
+    </div>
+    <script>
+        if($(window).width() < 801)
+        {
+            $('.wrap.pc').removeClass("fullpage");
+        } else {
+            $('.wrap.pc').addClass("fullpage");
+            var myFullpage = new fullpage('.fullpage', {
+                anchors: ['01', '02', '03', '04', '05', '06', '07', '08', '09'],
+                navigation: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['01', '02', '03', '04', '05', '06', '07', '08', '09'],
+                scrollBar: true,
+                responsiveWidth: 320,
+                afterLoad: function (origin, destination, direction) {
+                    console.log(destination.anchor)
+                    if(destination.anchor == '08' || destination.anchor == '09'){
+                        $('#moveSectionDown').hide()
+                    }else{
+                        $('#moveSectionDown').show()
+                    }
+                }
+            });
+
+            // $('#moveSectionUp').click(function(e){
+            //     e.preventDefault();
+            //     myFullpage.moveSectionUp();
+            // });
+
+            $('#moveSectionDown').click(function(e){
+                e.preventDefault();
+                myFullpage.moveSectionDown();
+            });
+        }
+
+        $('.slider').slick({
+            infinite: true,
+            dots: true,
+            // arrows: false,
+            // draggable: false,
+            slidesToShow: 1,
+            adaptiveHeight: true
+        });
+
+        $("#go-top").on("click", function() {
+          $("html, body").animate({ scrollTop: 0 }, 500);
+        });
+
+        // $(window).scroll(function(event) {
+        //   var lastScrollTop = $(window).scrollTop();
+        //   if (lastScrollTop > 110) {
+        //       $('header').addClass('is_acted');
+        //   } else {
+        //       $('header').removeClass('is_acted');
+        //   }
+        // });
+
+
+    </script>
+</body>
+</html>
